@@ -1,0 +1,77 @@
+<div class="metrics-container">
+  <div class="page-header">
+    <h2 class="page-title">{{ title }}</h2>
+    <h3 class="page-subtitle">{{ subtitle }}</h3>
+    
+    <div class="header-actions">
+      <button 
+        mat-button 
+        color="primary"
+        (click)="onRefreshData()">
+        <mat-icon>refresh</mat-icon>
+        Atualizar Dados
+      </button>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <!-- Time Series Chart -->
+    <div class="chart-section">
+      <app-time-series-chart
+        [title]="'Séries Temporais'"
+        [data]="timeSeriesData"
+        [variableName]="variableName"
+        [height]="350"
+        [color]="'#9c27b0'">
+      </app-time-series-chart>
+    </div>
+
+    <!-- Big Numbers -->
+    <div class="metrics-section">
+      <app-big-numbers
+        [title]="'Big Numbers'"
+        [metrics]="bigNumbersData"
+        [showTrends]="true"
+        [showIcons]="true">
+      </app-big-numbers>
+    </div>
+
+    <!-- Advanced Charts Grid -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <app-advanced-chart
+          [title]="'Performance do Sistema'"
+          [type]="'bar'"
+          [data]="performanceData"
+          [height]="300">
+        </app-advanced-chart>
+      </div>
+
+      <div class="chart-card">
+        <app-advanced-chart
+          [title]="'Eficiência vs Meta'"
+          [type]="'line'"
+          [data]="efficiencyData"
+          [height]="300">
+        </app-advanced-chart>
+      </div>
+    </div>
+
+    <!-- Additional Metrics Cards -->
+    <div class="metrics-cards">
+      <div class="metric-card" *ngFor="let metric of bigNumbersData">
+        <app-metric-card
+          [title]="metric.title"
+          [value]="metric.value"
+          [unit]="metric.unit"
+          [icon]="metric.icon"
+          [status]="metric.status"
+          [trend]="metric.trend"
+          [trendValue]="metric.trendValue"
+          [description]="metric.description"
+          [clickable]="true">
+        </app-metric-card>
+      </div>
+    </div>
+  </div>
+</div>

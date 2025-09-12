@@ -1,0 +1,40 @@
+.time-series-chart-container {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.chart-actions {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+}
+
+// Chart.js overrides for dark theme
+::ng-deep {
+  .chartjs-render-monitor {
+    background-color: transparent !important;
+  }
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .time-series-chart-container {
+    padding: 16px;
+  }
+  
+  .chart-actions {
+    position: static;
+    margin-top: 16px;
+    text-align: center;
+  }
+}

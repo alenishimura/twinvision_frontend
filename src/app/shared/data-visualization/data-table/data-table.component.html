@@ -1,0 +1,98 @@
+<div class="data-table-container">
+  <div class="table-header">
+    <h3 class="table-title">{{ title }}</h3>
+    
+    <div class="table-actions" *ngIf="showSearch || showActions">
+      <mat-form-field *ngIf="showSearch" class="search-field" appearance="outline">
+        <mat-label>Pesquisar</mat-label>
+        <input 
+          matInput 
+          [(ngModel)]="searchTerm"
+          (input)="onSearch($event.target.value)"
+          placeholder="Digite para pesquisar...">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      
+      <button 
+        *ngIf="showActions" 
+        mat-raised-button 
+        color="primary"
+        class="action-button">
+        <mat-icon>add</mat-icon>
+        Adicionar
+      </button>
+    </div>
+  </div>
+
+  <div class="table-wrapper" *ngIf="columns.length > 0 && data.length > 0; else noData">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th 
+            *ngFor="let column of columns"
+            [class.sortable]="column.sortable"
+            (click)="onSort(column)">
+            <div class="header-content">
+              <span>{{ column.label }}</span>
+              <mat-icon 
+                *ngIf="column.sortable" 
+                class="sort-icon"
+                [class.active]="sortColumn === column.key">
+                {{ sortColumn === column.key && sortDirection === 'asc' ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+              </mat-icon>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData" class="table-row">
+          <td *ngFor="let column of columns" [class]="'column-' + column.type">
+            <div class="cell-content">
+              <!-- Status column -->
+              <div *ngIf="column.type === 'status'" class="status-cell">
+                <div class="status-dot" [class]="getStatusClass(row[column.key])"></div>
+                <span>{{ row[column.key] }}</span>
+              </div>
+              
+              <!-- Regular content -->
+              <span *ngIf="column.type !== 'status'">{{ row[column.key] }}</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="showPagination && totalPages > 1">
+      <button 
+        mat-button 
+        [disabled]="currentPage === 1"
+        (click)="onPageChange(currentPage - 1)">
+        <mat-icon>chevron_left</mat-icon>
+        Anterior
+      </button>
+      
+      <span class="page-info">
+        Página {{ currentPage }} de {{ totalPages }}
+      </span>
+      
+      <button 
+        mat-button 
+        [disabled]="currentPage === totalPages"
+        (click)="onPageChange(currentPage + 1)">
+        Próxima
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="no-data">
+      <p>Nenhum dado disponível</p>
+      <button mat-button color="primary" (click)="generateSampleData()">
+        <mat-icon>add</mat-icon>
+        Gerar Dados de Exemplo
+      </button>
+    </div>
+  </ng-template>
+</div>

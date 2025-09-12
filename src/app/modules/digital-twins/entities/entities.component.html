@@ -1,0 +1,36 @@
+<div class="entities-container">
+  <div class="page-header">
+    <h2 class="page-title">{{ title }}</h2>
+    <h3 class="page-subtitle">{{ subtitle }}</h3>
+  </div>
+
+  <div class="page-content">
+    <div class="empty-state">
+      <div class="empty-icon">
+        <mat-icon>view_module</mat-icon>
+      </div>
+      <h3 class="empty-title">Nenhuma entidade encontrada</h3>
+      <p class="empty-description">
+        Comece criando sua primeira entidade digital twin para monitorar e analisar seus ativos.
+      </p>
+      <button 
+        mat-raised-button 
+        color="primary"
+        (click)="onCreateEntity()">
+        <mat-icon>add</mat-icon>
+        Criar Entidade
+      </button>
+    </div>
+  </div>
+
+  <div class="floating-action">
+    <button 
+      mat-fab 
+      color="primary" 
+      class="create-button"
+      (click)="onCreateEntity()"
+      matTooltip="Criar entidade">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+.alarms-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 24px 0;
+  padding: 0;
+}
+
+.nav-tabs {
+  ::ng-deep {
+    .mat-mdc-tab-group {
+      .mat-mdc-tab-header {
+        border-bottom: 1px solid var(--border-color);
+        
+        .mat-mdc-tab-label-container {
+          .mat-mdc-tab-labels {
+            .mat-mdc-tab-label {
+              color: var(--text-secondary);
+              font-weight: 500;
+              min-width: 120px;
+              
+              &.mdc-tab--active {
+                color: var(--accent-blue);
+              }
+            }
+          }
+          
+          .mat-mdc-tab-header-pagination {
+            .mat-mdc-tab-header-pagination-chevron {
+              color: var(--text-secondary);
+            }
+          }
+        }
+        
+        .mat-mdc-tab-header-pagination-chevron {
+          color: var(--text-secondary);
+        }
+      }
+      
+      .mat-mdc-tab-body-wrapper {
+        display: none; // Hide tab body since we use router-outlet
+      }
+    }
+  }
+}
+
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .nav-tabs {
+    ::ng-deep {
+      .mat-mdc-tab-group {
+        .mat-mdc-tab-header {
+          .mat-mdc-tab-label-container {
+            .mat-mdc-tab-labels {
+              .mat-mdc-tab-label {
+                min-width: 80px;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

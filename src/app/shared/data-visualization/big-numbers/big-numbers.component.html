@@ -1,0 +1,57 @@
+<div class="big-numbers-container">
+  <h3 class="section-title">{{ title }}</h3>
+  
+  <div class="metrics-grid" *ngIf="metrics.length > 0; else noData">
+    <div 
+      class="metric-card" 
+      *ngFor="let metric of metrics"
+      [class]="getStatusClass(metric.status)">
+      
+      <div class="metric-header">
+        <div class="metric-title">
+          <mat-icon *ngIf="showIcons && metric.icon" class="metric-icon">
+            {{ metric.icon }}
+          </mat-icon>
+          <span>{{ metric.title }}</span>
+        </div>
+        
+        <div class="metric-trend" *ngIf="showTrends && metric.trend">
+          <mat-icon [class]="getTrendClass(metric.trend)">
+            {{ getTrendIcon(metric.trend) }}
+          </mat-icon>
+          <span [class]="getTrendClass(metric.trend)">
+            {{ metric.trendValue }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="metric-value">
+        <span class="value">{{ metric.value }}</span>
+        <span class="unit" *ngIf="metric.unit">{{ metric.unit }}</span>
+      </div>
+      
+      <div class="metric-description" *ngIf="metric.description">
+        {{ metric.description }}
+      </div>
+      
+      <!-- Warning icon for warning status -->
+      <div class="status-indicator" *ngIf="metric.status === 'warning'">
+        <mat-icon class="warning-icon">warning</mat-icon>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #noData>
+    <div class="no-data">
+      <p>Nenhuma métrica disponível</p>
+      <button mat-button color="primary" (click)="generateSampleMetrics()">
+        <mat-icon>add</mat-icon>
+        Gerar Métricas de Exemplo
+      </button>
+    </div>
+  </ng-template>
+  
+  <div class="section-footer" *ngIf="metrics.length > 0">
+    <small class="footer-note">*Números médios</small>
+  </div>
+</div>

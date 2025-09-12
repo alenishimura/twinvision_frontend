@@ -1,0 +1,27 @@
+<div 
+  class="metric-card"
+  [class]="getStatusClass()"
+  [class.clickable]="clickable"
+  (click)="onCardClick()">
+  
+  <div class="card-header">
+    <div class="card-title">
+      <mat-icon *ngIf="icon" class="card-icon">{{ icon }}</mat-icon>
+      <span>{{ title }}</span>
+    </div>
+    
+    <div class="card-trend" *ngIf="trend && trendValue">
+      <mat-icon [class]="getTrendClass()">{{ getTrendIcon() }}</mat-icon>
+      <span [class]="getTrendClass()">{{ trendValue }}</span>
+    </div>
+  </div>
+  
+  <div class="card-value">
+    <span class="value">{{ value }}</span>
+    <span class="unit" *ngIf="unit">{{ unit }}</span>
+  </div>
+  
+  <div class="card-description" *ngIf="description">
+    {{ description }}
+  </div>
+</div>

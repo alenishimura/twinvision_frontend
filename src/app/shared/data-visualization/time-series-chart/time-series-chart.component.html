@@ -1,0 +1,18 @@
+<div class="time-series-chart-container">
+  <div class="chart-wrapper" [style.height.px]="height">
+    <canvas 
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType">
+    </canvas>
+  </div>
+  
+  <!-- Sample data button for demo -->
+  <div class="chart-actions" *ngIf="data.length === 0">
+    <button mat-button color="primary" (click)="generateSampleData()">
+      <mat-icon>play_arrow</mat-icon>
+      Gerar Dados de Exemplo
+    </button>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="thresholds-container">
+  <div class="page-header">
+    <h2 class="page-title">{{ title }}</h2>
+    <h3 class="page-subtitle">{{ subtitle }}</h3>
+  </div>
+
+  <div class="page-content">
+    <app-data-table
+      [title]="title"
+      [columns]="columns"
+      [data]="data"
+      [showActions]="false"
+      [showSearch]="true"
+      [showPagination]="true">
+    </app-data-table>
+  </div>
+
+  <div class="floating-action">
+    <button 
+      mat-fab 
+      color="primary" 
+      class="create-button"
+      (click)="onCreateThreshold()"
+      matTooltip="Criar threshold">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

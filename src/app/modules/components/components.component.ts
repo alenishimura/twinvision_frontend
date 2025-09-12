@@ -1,0 +1,38 @@
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
+@Component({
+  selector: 'app-components',
+  templateUrl: './components.component.html',
+  styleUrls: ['./components.component.scss']
+})
+export class ComponentsComponent implements OnInit {
+  currentTab = 'models';
+  
+  tabs = [
+    { id: 'models', label: 'Modelos', route: '/components/models' }
+  ];
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    // Track current route to set active tab
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        const url = event.url;
+        if (url.includes('/models')) {
+          this.currentTab = 'models';
+        }
+      });
+  }
+
+  onTabChange(tabId: string): void {
+    this.currentTab = tabId;
+    const tab = this.tabs.find(t => t.id === tabId);
+    if (tab) {
+      this.router.navigate([tab.route]);
+    }
+  }
+}

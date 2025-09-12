@@ -1,0 +1,29 @@
+<mat-toolbar class="header-toolbar">
+  <div class="header-content">
+    <!-- Left side -->
+    <div class="header-left">
+      <button 
+        mat-icon-button 
+        (click)="onToggleSidebar()"
+        class="menu-button"
+        aria-label="Toggle sidebar">
+        <mat-icon>menu</mat-icon>
+      </button>
+      
+      <div class="logo-section">
+        <div class="logo-icon">
+          <div class="logo-square"></div>
+        </div>
+        <span class="logo-text">TwinVision</span>
+        <mat-icon class="dropdown-icon">keyboard_arrow_down</mat-icon>
+      </div>
+    </div>
+
+    <!-- Right side -->
+    <div class="header-right">
+      <button mat-icon-button class="header-action" matTooltip="Settings">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

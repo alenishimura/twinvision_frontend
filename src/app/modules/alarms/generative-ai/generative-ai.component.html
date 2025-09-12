@@ -1,0 +1,36 @@
+<div class="generative-ai-container">
+  <div class="page-header">
+    <h2 class="page-title">{{ title }}</h2>
+    <h3 class="page-subtitle">{{ subtitle }}</h3>
+  </div>
+
+  <div class="page-content">
+    <div class="empty-state">
+      <div class="empty-icon">
+        <mat-icon>auto_awesome</mat-icon>
+      </div>
+      <h3 class="empty-title">Nenhum modelo de IA generativa encontrado</h3>
+      <p class="empty-description">
+        Explore o poder da inteligência artificial generativa para criar insights únicos e soluções inovadoras.
+      </p>
+      <button 
+        mat-raised-button 
+        color="primary"
+        (click)="onCreateAiModel()">
+        <mat-icon>add</mat-icon>
+        Criar Modelo de IA
+      </button>
+    </div>
+  </div>
+
+  <div class="floating-action">
+    <button 
+      mat-fab 
+      color="primary" 
+      class="create-button"
+      (click)="onCreateAiModel()"
+      matTooltip="Criar modelo de IA generativa">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

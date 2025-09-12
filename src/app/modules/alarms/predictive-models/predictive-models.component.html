@@ -1,0 +1,36 @@
+<div class="predictive-models-container">
+  <div class="page-header">
+    <h2 class="page-title">{{ title }}</h2>
+    <h3 class="page-subtitle">{{ subtitle }}</h3>
+  </div>
+
+  <div class="page-content">
+    <div class="empty-state">
+      <div class="empty-icon">
+        <mat-icon>psychology</mat-icon>
+      </div>
+      <h3 class="empty-title">Nenhum modelo preditivo encontrado</h3>
+      <p class="empty-description">
+        Crie modelos preditivos para antecipar falhas e otimizar o desempenho dos seus ativos digitais.
+      </p>
+      <button 
+        mat-raised-button 
+        color="primary"
+        (click)="onCreateModel()">
+        <mat-icon>add</mat-icon>
+        Criar Modelo Preditivo
+      </button>
+    </div>
+  </div>
+
+  <div class="floating-action">
+    <button 
+      mat-fab 
+      color="primary" 
+      class="create-button"
+      (click)="onCreateModel()"
+      matTooltip="Criar modelo preditivo">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
