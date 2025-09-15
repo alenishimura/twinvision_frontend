@@ -4,7 +4,7 @@
     
     <mat-tab-group 
       class="nav-tabs"
-      [selectedIndex]="tabs.findIndex(tab => tab.id === currentTab)"
+      [selectedIndex]="selectedIndex"
       (selectedTabChange)="onTabChange(tabs[$event.index].id)">
       
       <mat-tab 

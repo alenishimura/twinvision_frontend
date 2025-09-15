@@ -27,7 +27,7 @@ const routes = [
     path: '',
     component: DigitalTwinsComponent,
     children: [
-      { path: '', redirectTo: 'projects', pathMatch: 'full' },
+      { path: '', redirectTo: 'projects', pathMatch: 'full' as const },
       { path: 'projects', component: ProjectsComponent },
       { path: 'entities', component: EntitiesComponent },
       { path: 'metrics', component: MetricsComponent }

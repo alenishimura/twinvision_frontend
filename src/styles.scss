@@ -1,14 +1,13 @@
 /* Global Styles */
-@import '~@angular/material/theming';
-@include mat-core();
+@use '@angular/material' as mat;
 
 // Custom color palette based on the dark theme from images
-$twinvision-primary: mat-palette($mat-blue, 600);
-$twinvision-accent: mat-palette($mat-purple, 500);
-$twinvision-warn: mat-palette($mat-red, 500);
+$twinvision-primary: mat.define-palette(mat.$blue-palette, 600);
+$twinvision-accent: mat.define-palette(mat.$purple-palette, 500);
+$twinvision-warn: mat.define-palette(mat.$red-palette, 500);
 
 // Dark theme
-$twinvision-dark-theme: mat-dark-theme((
+$twinvision-dark-theme: mat.define-dark-theme((
   color: (
     primary: $twinvision-primary,
     accent: $twinvision-accent,
@@ -16,7 +15,7 @@ $twinvision-dark-theme: mat-dark-theme((
   )
 ));
 
-@include angular-material-theme($twinvision-dark-theme);
+@include mat.all-component-themes($twinvision-dark-theme);
 
 // Global variables
 :root {

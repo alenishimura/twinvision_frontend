@@ -29,7 +29,7 @@ const routes = [
     path: '',
     component: AlarmsComponent,
     children: [
-      { path: '', redirectTo: 'thresholds', pathMatch: 'full' },
+      { path: '', redirectTo: 'thresholds', pathMatch: 'full' as const },
       { path: 'thresholds', component: ThresholdsComponent },
       { path: 'predictive-models', component: PredictiveModelsComponent },
       { path: 'generative-ai', component: GenerativeAiComponent }

@@ -14,13 +14,17 @@ export class ComponentsComponent implements OnInit {
     { id: 'models', label: 'Modelos', route: '/components/models' }
   ];
 
+  get selectedIndex(): number {
+    return this.tabs.findIndex(tab => tab.id === this.currentTab);
+  }
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     // Track current route to set active tab
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
         const url = event.url;
         if (url.includes('/models')) {
           this.currentTab = 'models';

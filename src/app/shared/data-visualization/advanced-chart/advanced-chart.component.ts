@@ -54,7 +54,7 @@ export class AdvancedChartComponent implements OnInit {
           color: '#ffffff',
           font: {
             size: 16,
-            weight: '500',
+            weight: 500,
             family: 'Inter, sans-serif'
           }
         }

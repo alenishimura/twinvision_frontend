@@ -88,8 +88,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     // Track current route
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event) => {
         this.currentRoute = event.url;
       });
   }

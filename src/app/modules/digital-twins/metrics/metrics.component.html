@@ -63,12 +63,12 @@
         <app-metric-card
           [title]="metric.title"
           [value]="metric.value"
-          [unit]="metric.unit"
-          [icon]="metric.icon"
-          [status]="metric.status"
+          [unit]="metric.unit || ''"
+          [icon]="metric.icon || ''"
+          [status]="metric.status || 'normal'"
           [trend]="metric.trend"
           [trendValue]="metric.trendValue"
-          [description]="metric.description"
+          [description]="metric.description || ''"
           [clickable]="true">
         </app-metric-card>
       </div>

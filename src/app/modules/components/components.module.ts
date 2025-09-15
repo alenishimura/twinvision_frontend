@@ -25,7 +25,7 @@ const routes = [
     path: '',
     component: ComponentsComponent,
     children: [
-      { path: '', redirectTo: 'models', pathMatch: 'full' },
+      { path: '', redirectTo: 'models', pathMatch: 'full' as const },
       { path: 'models', component: ModelsComponent }
     ]
   }
